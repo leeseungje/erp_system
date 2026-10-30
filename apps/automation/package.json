@@ -1,0 +1,13 @@
+{
+  "name": "@erp/automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js",
+    "smoke": "node src/index.js"
+  },
+  "dependencies": {
+    "@erp/shared": "workspace:*",
+    "playwright": "^1.49.1"
+  }
+}

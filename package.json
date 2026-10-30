@@ -1,0 +1,14 @@
+{
+  "name": "erp-bridge",
+  "private": true,
+  "packageManager": "pnpm@12.16.1",
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "dev:api": "pnpm --dir apps/api dev",
+    "dev:automation": "pnpm --dir apps/automation dev",
+    "dev": "concurrently \"pnpm --dir apps/api dev\" \"pnpm --dir apps/web dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

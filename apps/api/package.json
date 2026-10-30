@@ -1,0 +1,16 @@
+{
+  "name": "@erp/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@erp/database": "workspace:*",
+    "@erp/shared": "workspace:*",
+    "@erp/validation": "workspace:*",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
