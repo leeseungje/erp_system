@@ -55,7 +55,8 @@
 
 - 전체 실행 가이드: [docs/run-guide.md](docs/run-guide.md)
 - 로컬 스토리북 패턴 페이지: http://localhost:3000/stories
-- GitHub Pages 스토리 목록: https://leeseungje.github.io/stories
+- GitHub Pages 메인 페이지: https://leeseungje.github.io/erp_system/
+- GitHub Pages 스토리 목록: https://leeseungje.github.io/erp_system/stories
 - 실행 요약 링크: [실행 가이드 바로 보기](docs/run-guide.md)
 
 ### 1) 저장소로 이동

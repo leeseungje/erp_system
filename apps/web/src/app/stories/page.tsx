@@ -1,5 +1,6 @@
 const patterns = [
   {
+    slug: 'basic-approval',
     title: '기본 결재 생성',
     level: '기본',
     summary: '가장 단순한 결재 등록 시나리오입니다.',
@@ -7,6 +8,7 @@ const patterns = [
     accent: '#1f6feb'
   },
   {
+    slug: 'ai-summary',
     title: 'AI 요약 생성',
     level: 'AI',
     summary: '요약 생성 버튼을 눌러 결재 내용을 정리합니다.',
@@ -14,6 +16,7 @@ const patterns = [
     accent: '#8b5cf6'
   },
   {
+    slug: 'validation',
     title: '필수값 검증',
     level: '검증',
     summary: '필수 항목이 빠지면 안내 메시지를 보여줍니다.',
@@ -21,6 +24,7 @@ const patterns = [
     accent: '#f59e0b'
   },
   {
+    slug: 'approver-selection',
     title: '결재자 지정',
     level: '승인',
     summary: '결재선이 연결되고 승인 대기 상태를 보여줍니다.',
@@ -28,6 +32,7 @@ const patterns = [
     accent: '#10b981'
   },
   {
+    slug: 'draft-save',
     title: '임시 저장',
     level: '저장',
     summary: 'API로 임시 저장하고 목록에 반영합니다.',
@@ -35,6 +40,7 @@ const patterns = [
     accent: '#ef4444'
   },
   {
+    slug: 'final-submit',
     title: '담당자 최종 상신',
     level: '마감',
     summary: '최종 상신 단계는 사람의 확인이 필요합니다.',
@@ -79,14 +85,18 @@ export default function StoriesPage() {
         }}
       >
         {patterns.map((pattern) => (
-          <article
-            key={pattern.title}
+          <a
+            key={pattern.slug}
+            href={`/stories/${pattern.slug}`}
             style={{
+              display: 'block',
               background: '#fff',
               border: '1px solid #dfe8f7',
               borderRadius: 18,
               boxShadow: '0 10px 24px rgba(15, 23, 42, 0.06)',
-              padding: 20
+              padding: 20,
+              color: 'inherit',
+              textDecoration: 'none'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
@@ -113,7 +123,7 @@ export default function StoriesPage() {
                 <li key={step}>{step}</li>
               ))}
             </ol>
-          </article>
+          </a>
         ))}
       </section>
     </main>
