@@ -116,9 +116,18 @@ export default function HomePage() {
           <p className="eyebrow">ERP Bridge</p>
           <h1>ERP Automation System</h1>
         </div>
-        <button className="primary-button" type="button" onClick={handleCreateApprovalRequest}>
-          결재 요청 생성
-        </button>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+          <a
+            href="/stories"
+            className="secondary-button"
+            style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            스토리 패턴 보기
+          </a>
+          <button className="primary-button" type="button" onClick={handleCreateApprovalRequest}>
+            결재 요청 생성
+          </button>
+        </div>
       </header>
 
       <section className="stats-grid">

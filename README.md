@@ -51,7 +51,12 @@
 
 ## 실행 방법
 
-아래 순서대로 진행하면 됩니다.
+아래 가이드를 참고하면 상황에 맞는 실행 방식으로 바로 시작할 수 있습니다.
+
+- 전체 실행 가이드: [docs/run-guide.md](docs/run-guide.md)
+- 로컬 스토리북 패턴 페이지: http://localhost:3000/stories
+- GitHub Pages 스토리 목록: https://leeseungje.github.io/stories
+- 실행 요약 링크: [실행 가이드 바로 보기](docs/run-guide.md)
 
 ### 1) 저장소로 이동
 
@@ -65,16 +70,29 @@ cd D:\erp_system
 pnpm install
 ```
 
-### 3) 프로젝트 실행
+### 3) 전체 프로젝트 실행
 
 ```bash
 pnpm dev
 ```
 
-### 4) 접속 주소
+### 4) 웹만 실행
+
+```bash
+pnpm --dir apps/web dev
+```
+
+### 5) API만 실행
+
+```bash
+pnpm --dir apps/api dev
+```
+
+### 6) 접속 주소
 
 - 웹 화면: http://localhost:3000
 - mock API: http://localhost:4000
+- 패턴 페이지: http://localhost:3000/stories
 
 ## 자동화 검증 실행
 
