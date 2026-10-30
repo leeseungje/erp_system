@@ -4,5 +4,7 @@ out
 coverage
 *.log
 .DS_Store
+.env.agent
+erp-bridge/
 storage/screenshots/*.png
 storage/evidence/*

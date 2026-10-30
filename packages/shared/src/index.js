@@ -23,3 +23,37 @@ export const formatCurrency = (value, currency = 'KRW') =>
         currency,
         maximumFractionDigits: 0,
     }).format(value);
+
+export const buildAmaranthSummary = (voucher = {}) => {
+    const company = voucher.company ?? '거래처';
+    const vendor = voucher.vendor ?? '담당자';
+    const amount = Number(voucher.amount ?? 0);
+    const currency = voucher.currency ?? 'KRW';
+    const paymentDate = voucher.paymentDate ?? '미정';
+    const description = voucher.description ?? '업무 비용';
+    const formattedAmount = new Intl.NumberFormat('ko-KR', {
+        style: 'currency',
+        currency,
+        maximumFractionDigits: 0,
+    }).format(amount);
+
+    return [
+        '아마란스10 검토 결과',
+        `${company}의 ${vendor} 요청 건 (${formattedAmount})이 접수되었습니다.`,
+        `지급 예정일: ${paymentDate} / 업무 내용: ${description}`,
+        '검토 항목: 비용 적합성, 거래처 확인, 세금계산서 및 업무 목적 점검',
+        '결재 단계: 사전 검토 → 담당자 확인 → 최종 상신',
+    ].join('\n');
+};
+
+export const buildAutomationPlan = ({ approver = '김팀장' } = {}) => ({
+    approver,
+    steps: [
+        'AI 요약 생성',
+        '필수 정보 검증',
+        `${approver} 결재선 지정`,
+        '임시 저장',
+        '담당자 최종 상신',
+    ],
+    manualSubmitRequired: true,
+});
