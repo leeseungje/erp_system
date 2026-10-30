@@ -50,6 +50,8 @@ const patterns = [
 ]
 
 export default function StoriesPage() {
+  const basePath = process.env.NODE_ENV === 'production' ? '/erp_system' : ''
+
   return (
     <main style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px 64px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, marginBottom: 24, flexWrap: 'wrap' }}>
@@ -60,7 +62,7 @@ export default function StoriesPage() {
           <h1 style={{ margin: '8px 0 0', fontSize: 36 }}>스토리북 패턴</h1>
         </div>
         <a
-          href="/"
+          href={`${basePath}/`}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -87,7 +89,7 @@ export default function StoriesPage() {
         {patterns.map((pattern) => (
           <a
             key={pattern.slug}
-            href={`/stories/${pattern.slug}`}
+            href={`${basePath}/stories/${pattern.slug}`}
             style={{
               display: 'block',
               background: '#fff',

@@ -48,13 +48,14 @@ export function generateStaticParams() {
 }
 
 export default function StoryDetailPage({ params }: { params: { slug: string } }) {
+  const basePath = process.env.NODE_ENV === 'production' ? '/erp_system' : ''
   const pattern = patterns[params.slug as keyof typeof patterns]
 
   if (!pattern) {
     return (
       <main style={{ maxWidth: 900, margin: '0 auto', padding: 32 }}>
         <h1>존재하지 않는 패턴입니다.</h1>
-        <a href="/stories" style={{ color: '#1f6feb' }}>
+        <a href={`${basePath}/stories`} style={{ color: '#1f6feb' }}>
           목록으로 돌아가기
         </a>
       </main>
@@ -64,7 +65,7 @@ export default function StoryDetailPage({ params }: { params: { slug: string } }
   return (
     <main style={{ maxWidth: 960, margin: '0 auto', padding: '32px 20px 64px' }}>
       <div style={{ marginBottom: 20 }}>
-        <a href="/stories" style={{ color: '#1f6feb', textDecoration: 'none', fontWeight: 700 }}>
+        <a href={`${basePath}/stories`} style={{ color: '#1f6feb', textDecoration: 'none', fontWeight: 700 }}>
           ← 스토리 목록
         </a>
       </div>

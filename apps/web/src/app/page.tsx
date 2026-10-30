@@ -15,6 +15,7 @@ const emptyForm = {
 
 export default function HomePage() {
   const formRef = useRef<HTMLFormElement | null>(null)
+  const basePath = process.env.NODE_ENV === 'production' ? '/erp_system' : ''
   const [vouchers, setVouchers] = useState<any[]>([])
   const [form, setForm] = useState(emptyForm)
   const [summary, setSummary] = useState('')
@@ -118,7 +119,7 @@ export default function HomePage() {
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
           <a
-            href="/stories"
+            href={`${basePath}/stories`}
             className="secondary-button"
             style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
