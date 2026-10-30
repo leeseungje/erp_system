@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { approvers, buildAmaranthSummary, buildAutomationPlan, dashboardCards, formatCurrency } from '@erp/shared'
 
 const emptyForm = {
@@ -14,6 +14,7 @@ const emptyForm = {
 }
 
 export default function HomePage() {
+  const formRef = useRef<HTMLFormElement | null>(null)
   const [vouchers, setVouchers] = useState<any[]>([])
   const [form, setForm] = useState(emptyForm)
   const [summary, setSummary] = useState('')
@@ -23,6 +24,26 @@ export default function HomePage() {
   useEffect(() => {
     loadVouchers()
   }, [])
+
+  function handleCreateApprovalRequest() {
+    setForm({
+      company: '아모레퍼시픽',
+      vendor: '홍길동',
+      amount: '2500000',
+      currency: 'KRW',
+      paymentDate: '2026-10-30',
+      approver: '김팀장',
+      description: '사무용품 구매 및 출장비'
+    })
+    setSummary('')
+    setStatusMessage('결재 요청을 준비했습니다. 아래 폼에서 내용을 확인하고 AI 요약을 생성해 주세요.')
+
+    requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const companyInput = formRef.current?.querySelector<HTMLInputElement>('input[name="company"]')
+      companyInput?.focus()
+    })
+  }
 
   async function loadVouchers() {
     try {
@@ -95,7 +116,7 @@ export default function HomePage() {
           <p className="eyebrow">ERP Bridge</p>
           <h1>ERP Automation System</h1>
         </div>
-        <button className="primary-button" type="button">
+        <button className="primary-button" type="button" onClick={handleCreateApprovalRequest}>
           결재 요청 생성
         </button>
       </header>
@@ -117,7 +138,7 @@ export default function HomePage() {
             <span className="tag success">아마란스10 연동</span>
           </div>
 
-          <form className="draft-form" onSubmit={handleDraftSave}>
+          <form ref={formRef} className="draft-form" onSubmit={handleDraftSave}>
             <div className="field-row">
               <label className="field">
                 <span>거래처</span>
