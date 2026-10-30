@@ -47,9 +47,11 @@ export function generateStaticParams() {
   return Object.keys(patterns).map((slug) => ({ slug }))
 }
 
-export default function StoryDetailPage({ params }: { params: { slug: string } }) {
+export default async function StoryDetailPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const basePath = process.env.NODE_ENV === 'production' ? '/erp_system' : ''
-  const pattern = patterns[params.slug as keyof typeof patterns]
+  const resolvedParams = await Promise.resolve(params)
+  const slug = resolvedParams.slug
+  const pattern = patterns[slug as keyof typeof patterns]
 
   if (!pattern) {
     return (
